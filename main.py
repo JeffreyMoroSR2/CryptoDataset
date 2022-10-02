@@ -18,9 +18,8 @@ def main(argv):
             return
         elif argv[0] == '-s':
             print('Supported methods: \n')
-            for i in Cryptolist:
-                for key, values in i.items():
-                    print(key, '\n')
+            for key, values in Cryptolist.items():
+                print(key, '\n')
             return
         elif argv[0] == '-m':
             print('Supported modes: \n')
