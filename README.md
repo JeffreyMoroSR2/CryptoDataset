@@ -1,12 +1,18 @@
 # Crypto_Dataset
 
-## Project installation
+## Project setup
 
-Run Dependencies.py to install all necessary exernal libs
+- Run Dependencies.py to install all necessary exernal libs
+- Run Create_Dependencies.py to create requirements.txt with additional exernal libs
 
-Run Create_Dependencies.py to create requirements.txt with additional exernal libs
+## How To Use
 
-## Manual
-Usage: python main.py -[enc/dec] [Enc/Dec method] [Mode] [Key] [InFile] [OutFile]
+### Using virtual environment
+***Before running main.py from the command line go to venv/Script and run activate.bat to enable virtual environment***
+
+main.py manual: 
+```
+python main.py -[enc/dec] [Enc/Dec method] [Mode] [Key] [InFile] [OutFile]
 To see supported methods use -> python main.py -s
 To see supported modes use -> python main.py -m
+```
