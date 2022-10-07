@@ -2,9 +2,8 @@ import sys
 import os
 from Libs.env import Cryptolist, ModeList
 
-
 """Importing available modules"""
-from Libs.AES import *
+from Libs.AES.AES import AES128
 
 """Command line functionality"""
 
@@ -69,12 +68,13 @@ def main(argv):
 
 
 def encryptor(Method, Mode, Key, in_file, out_file):
-    cipher_obj = Cryptolist[Method](Key, Mode)
-    cipher_obj.encfile(in_file, out_file)
+    encrypt = eval(Cryptolist[Method])(Key, Mode)
+    encrypt.encfile(in_file, out_file)
 
 
 def decryptor(Method, Mode, Key, in_file, out_file):
-    pass
+    decrypt = eval(Cryptolist[Method])(Key, Mode)
+    decrypt.decfile(in_file, out_file)
 
 
 if __name__ == "__main__":

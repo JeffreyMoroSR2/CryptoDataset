@@ -18,7 +18,6 @@ class AES128(Crypto128):
         self.cipher = AES.new(self.key, AES.MODE_ECB)
 
     def _encryptblock(self, block128):
-        # Check if correct block len, as for key
         return self.cipher.encrypt(block128)
 
     def _decryptBlock(self, block128):
