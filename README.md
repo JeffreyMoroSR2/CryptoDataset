@@ -2,8 +2,8 @@
 
 ## Project setup
 
-- Run Dependencies.py to install all necessary exernal libs
-- Run Create_Dependencies.py to create requirements.txt with additional exernal libs
+- Run Dependencies.py to install all necessary external libs
+- Run Create_Dependencies.py to create requirements.txt with additional external libs (***Only if add new Lib before uploading to GitHub***)
 
 ## How To Use
 
