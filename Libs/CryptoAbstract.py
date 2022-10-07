@@ -2,22 +2,19 @@ from abc import ABC, abstractmethod
 
 
 class Crypto128(ABC):
+
     @abstractmethod
-    def keygen(self):
+    def _encryptblock(self, block128):
         pass
 
     @abstractmethod
-    def encryptblock(self, block128):
+    def _decryptBlock(self, block128):
         pass
 
     @abstractmethod
-    def decryptBlock(self, block128):
+    def encfile(self, file_path_in, file_path_out):
         pass
 
     @abstractmethod
-    def encfile(self, file, secretKey, MODE):
-        pass
-
-    @abstractmethod
-    def decfile(self, file, secretKey, MODE):
+    def decfile(self, file_path_in, file_path_out):
         pass

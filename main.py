@@ -3,6 +3,12 @@ import os
 from Libs.env import Cryptolist, ModeList
 
 
+"""Importing available modules"""
+from Libs.AES import *
+
+"""Command line functionality"""
+
+
 def main(argv):
     n = len(argv)
     if n == 0:
@@ -35,11 +41,10 @@ def main(argv):
             return
 
         flag = False
-        for i in Cryptolist:
-            for key, values in i.items():
-                if argv[1] == key:
-                    flag = True
-                    break
+        for key, values in Cryptolist.items():
+            if argv[1] == key:
+                flag = True
+                break
             if flag:
                 break
         if not flag:
@@ -56,6 +61,20 @@ def main(argv):
     else:
         print('Wrong input, please try again or use -> python main.py -h')
         return
+
+    if argv[0] == '-enc':
+        encryptor(argv[1], argv[2], argv[3], argv[4], argv[5])
+    else:
+        decryptor(argv[1], argv[2], argv[3], argv[4], argv[5])
+
+
+def encryptor(Method, Mode, Key, in_file, out_file):
+    cipher_obj = Cryptolist[Method](Key, Mode)
+    cipher_obj.encfile(in_file, out_file)
+
+
+def decryptor(Method, Mode, Key, in_file, out_file):
+    pass
 
 
 if __name__ == "__main__":
