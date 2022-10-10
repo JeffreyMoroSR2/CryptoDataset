@@ -26,12 +26,14 @@ class AES128(Crypto128):
     def encfile(self, file_path_in, file_path_out):
         file_read = open(file_path_in, 'rb')
         file_write = open(file_path_out, 'wb')
+        integer_val = 0
+
         if self.mode == 'ECB':
             while 1:
                 temp = file_read.read(16)
                 if not temp:
                     break
-                temp = temp if len(temp) == 16 else temp + (16 - len(temp)) * str.encode(' ')
+                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
                 temp_number = self._encryptblock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
@@ -47,13 +49,14 @@ class AES128(Crypto128):
     def decfile(self, file_path_in, file_path_out):
         file_read = open(file_path_in, 'rb')
         file_write = open(file_path_out, 'wb')
+        integer_val = 0
 
         if self.mode == 'ECB':
             while 1:
                 temp = file_read.read(16)
                 if not temp:
                     break
-                temp = temp if len(temp) == 16 else temp + (16 - len(temp)) * str.encode(' ')
+                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
                 temp_number = self._decryptBlock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
