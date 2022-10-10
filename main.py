@@ -3,10 +3,11 @@ import os
 from Libs.env import Cryptolist, ModeList
 
 """Importing available modules"""
-from Libs.AES.AES import AES128
+from Libs.AES.AES128 import AES128
+from Libs.AES.AES192 import AES192
+from Libs.AES.AES256 import AES256
 
 """Command line functionality"""
-
 
 def main(argv):
     n = len(argv)
