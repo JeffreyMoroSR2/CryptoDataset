@@ -1,6 +1,25 @@
 from abc import ABC, abstractmethod
 
 
+class Crypto64(ABC):
+
+    @abstractmethod
+    def _encryptblock(self, block64):
+        pass
+
+    @abstractmethod
+    def _decryptBlock(self, block64):
+        pass
+
+    @abstractmethod
+    def encfile(self, file_path_in, file_path_out):
+        pass
+
+    @abstractmethod
+    def decfile(self, file_path_in, file_path_out):
+        pass
+
+
 class Crypto128(ABC):
 
     @abstractmethod

@@ -37,6 +37,7 @@ class AES256(Crypto256):
                 temp_number = self._encryptblock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
+            # TODO: implement CBC
             while 1:
                 temp = file_read.read(8)
                 if not temp:
@@ -60,6 +61,7 @@ class AES256(Crypto256):
                 temp_number = self._decryptBlock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
+            # TODO: implement CBC
             while 1:
                 temp = file_read.read(8)
                 if not temp:

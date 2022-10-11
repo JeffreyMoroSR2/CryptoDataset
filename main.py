@@ -6,8 +6,10 @@ from Libs.env import Cryptolist, ModeList
 from Libs.AES.AES128 import AES128
 from Libs.AES.AES192 import AES192
 from Libs.AES.AES256 import AES256
+from Libs.DES.Single_DES import Single_DES
 
 """Command line functionality"""
+
 
 def main(argv):
     n = len(argv)
@@ -23,12 +25,12 @@ def main(argv):
                   'To see supported modes use -> python main.py -m')
             return
         elif argv[0] == '-s':
-            print('Supported methods: \n')
+            print('Supported methods:')
             for key, values in Cryptolist.items():
-                print(key, '\n')
+                print(key)
             return
         elif argv[0] == '-m':
-            print('Supported modes: \n')
+            print('Supported modes:')
             for i in ModeList:
                 print(i)
             return

@@ -1,27 +1,27 @@
-from Crypto.Cipher import AES
-from Libs.CryptoAbstract import Crypto192
+from Crypto.Cipher import DES
+from Libs.CryptoAbstract import Crypto64
 
 
-class AES192(Crypto192):
+class Single_DES(Crypto64):
 
     def __init__(self, key, mode):
         self.mode = mode
 
         # key initialization
         self.key = str.encode(key)
-        if len(self.key) > 24:
-            raise ValueError('Key must be 24 bytes or less')
-        elif len(self.key) < 24:
-            self.key += str.encode('0') * (24 - len(self.key))
+        if len(self.key) > 8:
+            raise ValueError('Key must be 7 bytes or less')
+        elif len(self.key) < 8:
+            self.key += str.encode('0') * (8 - len(self.key))
 
         # AES object initialization (from Crypto.Cipher lib)
-        self.cipher = AES.new(self.key, AES.MODE_ECB)
+        self.cipher = DES.new(self.key, DES.MODE_ECB)
 
-    def _encryptblock(self, block128):
-        return self.cipher.encrypt(block128)
+    def _encryptblock(self, block64):
+        return self.cipher.encrypt(block64)
 
-    def _decryptBlock(self, block128):
-        return self.cipher.decrypt(block128)
+    def _decryptBlock(self, block64):
+        return self.cipher.decrypt(block64)
 
     def encfile(self, file_path_in, file_path_out):
         file_read = open(file_path_in, 'rb')
@@ -30,10 +30,10 @@ class AES192(Crypto192):
 
         if self.mode == 'ECB':
             while 1:
-                temp = file_read.read(16)
+                temp = file_read.read(8)
                 if not temp:
                     break
-                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
+                temp = temp if len(temp) == 8 else temp + integer_val.to_bytes((8 - len(temp)), 'big')
                 temp_number = self._encryptblock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
@@ -54,10 +54,10 @@ class AES192(Crypto192):
 
         if self.mode == 'ECB':
             while 1:
-                temp = file_read.read(16)
+                temp = file_read.read(8)
                 if not temp:
                     break
-                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
+                temp = temp if len(temp) == 8 else temp + integer_val.to_bytes((8 - len(temp)), 'big')
                 temp_number = self._decryptBlock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
