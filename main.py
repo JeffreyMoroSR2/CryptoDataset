@@ -7,6 +7,7 @@ from Libs.AES.AES128 import AES128
 from Libs.AES.AES192 import AES192
 from Libs.AES.AES256 import AES256
 from Libs.DES.Single_DES import Single_DES
+from Libs.DES.Triple_DES import Triple_DES
 
 """Command line functionality"""
 

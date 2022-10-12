@@ -1,21 +1,21 @@
-from Crypto.Cipher import DES
+from Crypto.Cipher import DES3
 from Libs.CryptoAbstract import Crypto64
 
 
-class Single_DES(Crypto64):
+class Triple_DES(Crypto64):
 
     def __init__(self, key, mode):
         self.mode = mode
 
         # key initialization
         self.key = str.encode(key)
-        if len(self.key) > 8:
-            raise ValueError('Key must be 8 bytes or less')
-        elif len(self.key) < 8:
-            self.key += str.encode('0') * (8 - len(self.key))
+        if len(self.key) > 24:
+            raise ValueError('Key must be 24 bytes or less')
+        elif len(self.key) < 24:
+            self.key += str.encode('0') * (24 - len(self.key))
 
         # AES object initialization (from Crypto.Cipher lib)
-        self.cipher = DES.new(self.key, DES.MODE_ECB)
+        self.cipher = DES3.new(self.key, DES3.MODE_ECB)
 
     def _encryptblock(self, block64):
         return self.cipher.encrypt(block64)
