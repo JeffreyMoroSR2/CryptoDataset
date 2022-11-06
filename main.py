@@ -9,6 +9,7 @@ from Libs.AES.AES256 import AES256
 from Libs.DES.Single_DES import Single_DES
 from Libs.DES.Triple_DES import Triple_DES
 from Libs.CAST.CAST import CAST128
+from Libs.RC.RC2 import RC2
 
 """Command line functionality"""
 
