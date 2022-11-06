@@ -14,7 +14,7 @@ class Triple_DES(Crypto64):
         elif len(self.key) < 24:
             self.key += str.encode('0') * (24 - len(self.key))
 
-        # AES object initialization (from Crypto.Cipher lib)
+        # DES3 object initialization (from Crypto.Cipher lib)
         self.cipher = DES3.new(self.key, DES3.MODE_ECB)
 
     def _encryptblock(self, block64):

@@ -14,7 +14,7 @@ class RC2(Crypto64):
         elif len(self.key) < 5:
             self.key += str.encode('0') * (5 - len(self.key))
 
-        # AES object initialization (from Crypto.Cipher lib)
+        # RC2 object initialization (from Crypto.Cipher lib)
         self.cipher = ARC2.new(self.key, ARC2.MODE_ECB)
 
     def _encryptblock(self, block64):

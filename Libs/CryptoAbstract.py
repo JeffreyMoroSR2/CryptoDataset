@@ -75,3 +75,22 @@ class Crypto256(ABC):
     @abstractmethod
     def decfile(self, file_path_in, file_path_out):
         pass
+
+
+class Crypto_Stream(ABC):
+
+    @abstractmethod
+    def _encrypt(self, data):
+        pass
+
+    @abstractmethod
+    def _decrypt(self, data):
+        pass
+
+    @abstractmethod
+    def encfile(self, file_path_in, file_path_out):
+        pass
+
+    @abstractmethod
+    def decfile(self, file_path_in, file_path_out):
+        pass

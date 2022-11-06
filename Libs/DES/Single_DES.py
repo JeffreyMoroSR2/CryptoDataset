@@ -14,7 +14,7 @@ class Single_DES(Crypto64):
         elif len(self.key) < 8:
             self.key += str.encode('0') * (8 - len(self.key))
 
-        # AES object initialization (from Crypto.Cipher lib)
+        # DES object initialization (from Crypto.Cipher lib)
         self.cipher = DES.new(self.key, DES.MODE_ECB)
 
     def _encryptblock(self, block64):

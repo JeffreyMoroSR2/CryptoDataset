@@ -11,6 +11,8 @@ from Libs.DES.Triple_DES import Triple_DES
 from Libs.CAST.CAST import CAST128
 from Libs.RC.RC2 import RC2
 
+from Libs.Salsa20.Salsa20 import Salsa_20
+
 """Command line functionality"""
 
 

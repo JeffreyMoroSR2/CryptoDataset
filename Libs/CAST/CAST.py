@@ -14,7 +14,7 @@ class CAST128(Crypto64):
         elif len(self.key) < 5:
             self.key += str.encode('0') * (5 - len(self.key))
 
-        # AES object initialization (from Crypto.Cipher lib)
+        # CAST object initialization (from Crypto.Cipher lib)
         self.cipher = CAST.new(self.key, CAST.MODE_ECB)
 
     def _encryptblock(self, block128):
