@@ -6,4 +6,4 @@ Cryptolist = {'AES-128': 'AES128', 'AES-192': 'AES192', 'AES-256': 'AES256',
               'Salsa20': 'Salsa_20'}
 
 # List of available modes
-ModeList = ['ECB']
+ModeList = ['ECB', 'CBC']

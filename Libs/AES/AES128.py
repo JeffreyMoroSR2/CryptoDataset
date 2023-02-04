@@ -2,6 +2,10 @@ from Crypto.Cipher import AES
 from Libs.CryptoAbstract import Crypto128
 
 
+def byte_xor(ba1, ba2):
+    return bytes([_a ^ _b for _a, _b in zip(ba1, ba2)])
+
+
 class AES128(Crypto128):
 
     def __init__(self, key, mode):
@@ -37,12 +41,17 @@ class AES128(Crypto128):
                 temp_number = self._encryptblock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
-            # TODO: implement CBC
+            IV = str.encode('0000000000000000')
+            i = 0
             while 1:
-                temp = file_read.read(8)
+                temp = file_read.read(16)
                 if not temp:
                     break
-                file_write.write(temp)
+                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
+                temp = byte_xor(temp, IV)
+                IV = self._encryptblock(temp)
+                file_write.write(IV)
+                i = i + 1
 
         file_read.close()
         file_write.close()
@@ -61,12 +70,17 @@ class AES128(Crypto128):
                 temp_number = self._decryptBlock(temp)
                 file_write.write(temp_number)
         elif self.mode == 'CBC':
-            # TODO: implement CBC
+            IV = str.encode('0000000000000000')
+            i = 0
             while 1:
-                temp = file_read.read(8)
+                temp = file_read.read(16)
                 if not temp:
                     break
-                file_write.write(temp)
+                temp = temp if len(temp) == 16 else temp + integer_val.to_bytes((16 - len(temp)), 'big')
+                temp = byte_xor(temp, IV)
+                IV = self._decryptBlock(temp)
+                file_write.write(IV)
+                i = i + 1
 
         file_read.close()
         file_write.close()
